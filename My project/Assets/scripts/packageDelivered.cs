@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class packageDelivered : MonoBehaviour
 {
+
+    [SerializeField]
+    string levelToLoad = "winner";
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +24,7 @@ public class packageDelivered : MonoBehaviour
     {
         if (collision.gameObject.tag == "Finish")
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            SceneManager.LoadScene(levelToLoad);
         }
     }
 }
