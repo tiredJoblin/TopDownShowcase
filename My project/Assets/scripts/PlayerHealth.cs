@@ -37,6 +37,25 @@ public class PlayerHealth : MonoBehaviour
         }
 
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log(collision.gameObject.name);
+        //we want to take damage IF the player hits the enemy capsule
+        //bool key = true;
+        if (collision.gameObject.tag == "Enemy")
+        {
+            //health = health - 1;
+            health -= 1;
+            //health--;
+
+            if (health <= 0)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                //SceneManager.LoadScene("lose");
+            }
+        }
+
+    }
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
@@ -50,8 +69,5 @@ public class PlayerHealth : MonoBehaviour
             }
         }
     }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        
-    }
+  
 }
